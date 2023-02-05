@@ -9,3 +9,5 @@ https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/treesurvey/Fe
 
 how to get temporary token use this link :  https://developers.arcgis.com/applications 
 create an application once created this will give you a teporary token 
+
+
