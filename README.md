@@ -1,11 +1,20 @@
 # geom99lab2
 
+Can you store your GeoJSON in GitHub and display it on the ArcGIS Map Viewer? Answer: yes 
+What happens if you make a change to the file in GitHub? Answer: if you used refrence it will change if you used hosted feature layer it will not.
+
+link to geojson
+https://jordantishler.github.io/geom99lab2/chabottrail.geojson
+
+Three links:
+
 Developer tree survey hosted feature layer url: 
 https://developers.arcgis.com/layers/444c6385d18f42d68e0d8a4cbd473921
-items page: 
+arcgis online items page: 
 https://fleming.maps.arcgis.com/home/item.html?id=444c6385d18f42d68e0d8a4cbd473921 
 rest url:
 https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/treesurvey/FeatureServer
+to get token for this site go to 2nd link and type in &view=source at end and go to f12 on the first link
 
 how to get temporary token use this link :  https://developers.arcgis.com/applications 
 create an application once created this will give you a teporary token
@@ -28,3 +37,5 @@ Tutorial 3:
 https://jordantishler.github.io/geom99lab2/tutorial3
 final map:
 https://jordantishler.github.io/geom99lab2/valentine
+
+
