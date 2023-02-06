@@ -10,7 +10,8 @@
       height: 1000px;
       width: 100%;
       z-index: 0;
-      left: 0;
+      margin-left: -10px;
+      margin-right: -10px;
     }
 .pad {
   padding-left: 10px ;
@@ -47,22 +48,31 @@ body {
     zoom: 12
   });
 
-  const popupTrailheads = {
+  const popupvalentine = {
         "title": "Date Information",
         "content": "<b>Date Spot:</b> {DateSpot}<br><b>What is it:</b> {WhatIsIt}<br><b> What to do:</b> {WhatToDo}"
       }
 //valentine dates feature layer (points)
   const valentinesDates = new FeatureLayer({
-    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/valentines_date_spots_in_paris_france/FeatureServer/0",
+    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/valentines_date_spots_in_paris_france/FeatureServer",
     outFields: ["DateSpot","WhatIsIt","WhatToDo"],
-    popupTemplate: popupTrailheads
+    popupTemplate: popupvalentine,
   });
 
   map.add(valentinesDates);
-
+  const trailsRenderer = {
+        type: "simple",
+        symbol: {
+          color: "#FF0000",
+          type: "simple-fill",
+          style: "solid",
+        },
+      };
 //valentine dates feature layer (points)
 const parksLayer = new FeatureLayer({
-    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/heart/FeatureServer/0"
+    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/heart/FeatureServer",
+    renderer: trailsRenderer,
+    opacity: .50
   });
 
   map.add(parksLayer, 0);
