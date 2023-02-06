@@ -60,18 +60,23 @@ body {
   });
 
   map.add(valentinesDates);
-  const trailsRenderer = {
+  const valentineRenderer = {
         type: "simple",
         symbol: {
           color: "#FF0000",
           type: "simple-fill",
           style: "solid",
+          outline: {
+            style: "solid",
+            width:"4",
+            color: "#000000",
+          }
         },
       };
 //valentine dates feature layer (points)
 const parksLayer = new FeatureLayer({
     url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/heart/FeatureServer",
-    renderer: trailsRenderer,
+    renderer: valentineRenderer,
     opacity: .50
   });
 
