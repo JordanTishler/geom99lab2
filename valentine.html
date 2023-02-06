@@ -1,95 +1,81 @@
 <html>
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-      <title>ArcGIS Maps SDK for JavaScript Tutorials: Add a styled basemap layer</title>
-      <style>
-        html, body, #viewDiv {
-          padding: 0;
-          margin: 0;
-          height: 100%;
-          width: 100%;
-        }
-      </style>  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
-      <script src="https://js.arcgis.com/4.25/"></script>
-      <script>
-    
-      require([
-        "esri/config",
-        "esri/Map",
-        "esri/views/MapView",
-    
-        "esri/Basemap",
-        "esri/layers/VectorTileLayer",
-        "esri/layers/TileLayer",
-    
-      ], function(esriConfig, Map, MapView, Basemap, VectorTileLayer, TileLayer) {
-    
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ArcGIS Maps SDK for JavaScript Tutorials: Add a feature layer</title>
+  <style>
+#viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 1000px;
+      width: 100%;
+      z-index: 0;
+      left: 0;
+    }
+.pad {
+  padding-left: 10px ;
+  background-color: rgba(177, 177, 177, 0.521);
+
+}
+body {
+  background-image: url(hearter.webp);
+}
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.25/"></script>
+
+  <script>
+  require([
+    "esri/config",
+    "esri/Map",
+    "esri/views/MapView",
+
+    "esri/layers/FeatureLayer"
+
+  ], function(esriConfig,Map, MapView, FeatureLayer) {
+
       esriConfig.apiKey = "AAPK9dd9b2d96eb148049d44eaaae65734dbzvckX6V7v-0qD99Pxx3cNQRtkKRhvrfE6P6cdreNXzdl04f9khOqMy0gcb-wDYG_";
-    
-      const vectorTileLayer = new VectorTileLayer({
-        portalItem: {
-          id: "6976148c11bd497d8624206f9ee03e30" // Forest and Parks Canvas
-        },
-        opacity: .75
-      });
-    
-      const imageTileLayer = new TileLayer({
-        portalItem: {
-          id: "1b243539f4514b6ba35e7d995890db1d" // World Hillshade
-        }
-      });
-    
-      const basemap = new Basemap({
-        baseLayers: [
-    
-          imageTileLayer,
-          vectorTileLayer
-    
-        ]
-      });
-    
-    // const apikey = YOUR_API_KEY ;
-      const map = new Map({
-        basemap: basemap,
-      });
-    
-      const view = new MapView({
-        container: "viewDiv",
-        map: map,
-    
-        center: [2.364888, 48.866421 ],
-        zoom: 6
-    
-      });
-      
-    const graphicsLayer = new GraphicsLayer();
-     map.add(graphicsLayer);
 
-     const point = { //Create a point
-        type: "point",
-        longitude: 2.294087,
-        latitude:  48.858520
-     };
-     const simpleMarkerSymbol = {
-        type: "simple-marker",
-        color: [226, 119, 40],  // Orange
-        outline: {
-            color: [255, 255, 255], // White
-            width: 1
-        }
-     };
-     const pointGraphic = new Graphic({
-        geometry: point,
-        symbol: simpleMarkerSymbol
-     });
-     graphicsLayer.add(pointGraphic);
-      });
+  const map = new Map({
+    basemap: "arcgis-topographic"
+  });
 
-      </script>
-    </head>
-    <body>
-      <div id="viewDiv"></div>
-    </body>
-    </html>
-    
+  const view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [2.337765, 48.856144],
+    zoom: 12
+  });
+
+  const popupTrailheads = {
+        "title": "Date Information",
+        "content": "<b>Date Spot:</b> {DateSpot}<br><b>What is it:</b> {WhatIsIt}<br><b> What to do:</b> {WhatToDo}"
+      }
+//valentine dates feature layer (points)
+  const valentinesDates = new FeatureLayer({
+    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/valentines_date_spots_in_paris_france/FeatureServer/0",
+    outFields: ["DateSpot","WhatIsIt","WhatToDo"],
+    popupTemplate: popupTrailheads
+  });
+
+  map.add(valentinesDates);
+
+//valentine dates feature layer (points)
+const parksLayer = new FeatureLayer({
+    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/heart/FeatureServer/0"
+  });
+
+  map.add(parksLayer, 0);
+
+  });
+</script>
+
+</head>
+<body>
+  <div class="pad">
+<h1> Date Ideas In Paris France</h1>
+<h2> Click on any of the points inside the heart for more information on the dates</h2>
+</div>
+  <div id="viewDiv"></div>
+</body>
+</html>
