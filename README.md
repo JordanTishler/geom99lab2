@@ -19,3 +19,12 @@ An API Key is a simple code that is passed in by a client to identify the callin
 An Authentication Token, on the other hand, is used to securely identify the user making the request and to provide access to the user's private content and resources. The authentication token is passed in as a parameter in each API request.
 
 In short, an API Key is used for accessing public data, while an Authentication Token is used for accessing private data and requires user authentication.
+
+Tutorial 1:
+https://jordantishler.github.io/geom99lab2/tutorial1
+Tutorial 2:
+https://jordantishler.github.io/geom99lab2/tutorial2
+Tutorial 3:
+https://jordantishler.github.io/geom99lab2/tutorial3
+final map:
+https://jordantishler.github.io/geom99lab2/valentine
